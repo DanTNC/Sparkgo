@@ -5,16 +5,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
 public class FirstActivity extends AppCompatActivity {
+
+
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -95,17 +97,19 @@ public class FirstActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
-        mWebView = (WebView) findViewById(R.id.webview);
+        mWebView = (WebView) findViewById(R.id.webviewindex);
+        mWebView.clearCache(true);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("http://luffy.ee.ncku.edu.tw/~fad11204/exter/Sparkgo");
-
+        mWebView.loadUrl("http://luffy.ee.ncku.edu.tw/~fad11204/Sparkgo");
+        mWebView.setWebChromeClient(new WebChromeClient());
+        mWebView.addJavascriptInterface(new AndroidtoJs(this), "android");
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toggle();
+                //toggle();
             }
         });
 
