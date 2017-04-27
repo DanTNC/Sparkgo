@@ -18,7 +18,7 @@ public class AndroidtoJs extends Object {
         mContext = c;
     }
     @JavascriptInterface
-    public void callJavaMethod() {
+    public void callJavaMethod(String s1,String s2,String s3) {
         Intent i = new Intent(mContext, FullscreenActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(i);

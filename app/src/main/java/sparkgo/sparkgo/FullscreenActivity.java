@@ -38,7 +38,7 @@ public class FullscreenActivity extends AppCompatActivity {
     private View mContentView;
     private WebView mWebView;
     private WebView mWebView2;
-    private Button mButton;
+    private WebView mWebView3;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -110,14 +110,10 @@ public class FullscreenActivity extends AppCompatActivity {
         mWebView2.getSettings().setJavaScriptEnabled(true);
         mWebView2.setWebViewClient(new WebViewClient());
         mWebView2.loadUrl("https://www.youtube.com/user/jasonjason1124");
-
-        mButton = (Button) findViewById(R.id.button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        mWebView3 = (WebView) findViewById(R.id.webview3);
+        mWebView3.getSettings().setJavaScriptEnabled(true);
+        mWebView3.setWebViewClient(new WebViewClient());
+        mWebView3.loadUrl("https://www.instagram.com/");
 
         //Tab 1
         TabHost.TabSpec spec = host.newTabSpec("Tab One");
